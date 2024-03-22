@@ -1,0 +1,312 @@
+<?php include('admin_shared/admin_header.php'); ?>
+<!-- END Head-->
+
+<!-- START: Body-->
+
+<body id="main-container" class="default">
+
+    <!-- END: Main Menu-->
+    <?php include('admin_shared/admin_sidebar.php'); ?>
+    <!-- END: Main Menu-->
+
+    <!-- START: Main Content-->
+    <main>
+        <div class="container-fluid site-width">
+            <!-- START: Listing-->
+            <div class="row">
+                <div class="col-12  align-self-center">
+                    <div class="col-12 col-sm-12 mt-3">
+                        <div class="card">
+                            <div class="card-header justify-content-between align-items-center">
+                                <h4 class="card-title">FTL Request List</h4>
+                            </div>
+
+                            <div class="card-header justify-content-between align-items-center">
+                                <span>
+
+                                </span>
+                            </div>
+                            <div class="card-body">
+<div id="message"></div> 
+                                <?php if ($this->session->flashdata('notify') != '') { ?>
+                                    <div class="alert <?php echo $this->session->flashdata('class'); ?> alert-colored"><?php echo $this->session->flashdata('notify'); ?></div>
+                                <?php unset($_SESSION['class']);
+                                    unset($_SESSION['notify']);
+                                } ?>
+                                <div class="table-responsive">
+                                 <table class="table table-striped table-bordered layout-primary" data-sorting="true" id="datatable">
+                                        <!-- id="example"-->
+                                        <thead>
+                                            <tr>
+                                                <th>Sr. No.</th>
+                                                <th scope="col">Request ID</th>
+                                                <th scope="col">Customer Name</th>
+                                                <th scope="col">Customer ID</th>
+                                                <th scope="col">Order Date</th>
+                                                <th scope="col">Request Date</th>
+                                                <th scope="col">Origin Pincode</th>
+                                                <th scope="col">Origin City</th>
+                                                <th scope="col">Destination City </th>
+                                                <th scope="col">Destination Pincode</th>
+                                                <th scope="col">Vehicle Name</th>
+                                                <th scope="col">Vehicle Capacity</th>
+                                                <th scope="col">Pickup Address</th>
+                                                <th scope="col">Contact Number</th>
+                                                <th scope="col">Delivery Address</th>
+                                                <th scope="col">Delivery Contact Number</th>
+                                                <th scope="col">Delivery Contact Person Name</th>
+                                                <th scope="col">Amount</th>
+                                                <th  scope="col">Total Amount</th>
+                                                <th scope="col">Status</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                            <?php if (!empty($ftl_request_data)) {
+                                                $cnt = 1;
+                                                foreach ($ftl_request_data as $value) : ?>
+                                                    <tr>
+                                                        <td><?php echo  $cnt++; ?></td>
+                                                        <td><?php echo $value['ftl_request_id']; ?></td>
+                                                        <td><?php echo $value['customer_name']; ?></td>
+                                                        <td><?php echo $value['customer_id']; ?></td>
+                                                        <td><?php echo $value['order_date']; ?></td>
+                                                        <td><?php echo $value['request_date_time']; ?></td>
+                                                        <td><?php echo $value['origin_pincode']; ?></td>
+                                                        <td><?php echo $value['origin_city']; ?></td>
+                                                        <td><?php echo $value['destination_city']; ?></td>
+                                                        <td><?php echo $value['destination_pincode']; ?></td>
+                                                        <td><?php echo $value['vehicle_name']; ?></td>
+                                                        <td><?php echo $value['vehicle_capacity']; ?></td>
+                                                        <td><?php echo $value['pickup_address']; ?></td>
+                                                        <td><?php echo $value['contact_number']; ?></td>
+                                                        <td><?php echo $value['delivery_address']; ?></td>
+                                                        <td><?php echo $value['delivery_contact_no']; ?></td>
+                                                        <td><?php echo $value['delivery_contact_person_name']; ?></td>
+                                                        <td style="color:blue"><?php echo $value['amount']; ?></td>
+                                                        <td><?php echo $value['commissinon_amount'];?></td>
+                                                        <td>
+                                                            <?php if ($value['status'] == 0) { ?><button class="btn btn-warning getamount" relid="<?php echo $value['ftl_request_id']; ?>">Pending</button> <?php } elseif ($value['status'] == 1) { ?>
+                                                                <button class="btn btn-success">Approved </button> <?php } else { ?> <button class="btn btn-danger"> Cancel </button> <?php } ?>
+                                                        </td>
+
+
+                                                    </tr>
+                                                <?php endforeach; ?>
+                                            <?php } else { ?>
+                                                <tr>
+                                                    <td colspan="10" style="color:red;">No Data Found</td>
+                                                </tr>
+                                            <?php } ?>
+
+                                        </tbody>
+
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- END: Listing-->
+        </div>
+    </main>
+
+
+    <div id="show_modal" class="modal fade" role="dialog" style="background: #000;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                 
+                    <h3 style="font-size: 24px; color: #17919e; text-shadow: 1px 1px #ccc;"><i class="fa fa-folder"></i>FTL Request data</h3>
+                    <button type="button" class="btn btn-danger float-right" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>FTL Request Id</label>
+                                    <input type="text" name="ftl_request_id" id="ftl_request_id" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label>Customer Name</label>
+                                    <input type="text" id="customer_name" class="form-control">
+                                </div>
+                                <!-- <div class="col-md-4"> -->
+                                    <div class="form-group">
+                                        <label>Amount</label>
+                                        <input type="text" name="amount" id="amount" class="form-control">
+                                    <!-- </div> -->
+                                </div>
+                            </div>
+                         </div>
+                            <div class="row">
+
+                               <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Select Commission</label>
+                                        <select class="form-control" id="select_amount">
+                                            <option>Select Commission Type</option>
+                                            <option value="1">Amount</option>
+                                            <option value="2">Percentage</option>
+                                        </select>
+                                    </div>
+                                </div>
+                               
+                                <div class="col-md-4"  id="c_amount" style="display:none">
+                                    <div class="form-group">
+                                        <label>Commission Amount </label>
+                                        <input type="text" id="comm_amount" class="form-control" placeholder="Enter Amount">
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-4"  id="p_amount"  style="display:none">
+                                    <div class="form-group">
+                                        <label>Commission Amount </label>
+                                        <input type="text" class="form-control"  id="per_amount" placeholder="Enter Percentage Amount">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Total Amount </label>
+                                        <input type="text" name="commissinon_amount" id="total" class="form-control commissinon_amount">
+                                    </div>
+                                </div>
+
+                            </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success updateStatus" value="1">Approved</button>
+                    <button type="submit" class="btn btn-warning"  id="updateStatus1"value="2">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<style>
+    label {
+    display: inline-block;
+    margin-top: 14px;
+    margin-bottom: 0.5rem;
+    }
+</style>
+
+
+
+    <?php include('admin_shared/admin_footer.php'); ?>
+    <!-- START: Footer-->
+</body>
+<!-- END: Body-->
+
+</html>
+<script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+
+        $('#datatable').DataTable({
+            "aLengthMenu": [ [2, 4, 8, -1], [2, 4, 8, "All"] ],
+              "iDisplayLength": 10,  
+         });
+
+        $('.getamount').click(function() {
+
+            var id = $(this).attr('relid'); //get the attribute value
+           // alert(id);
+
+            $.ajax({
+                url: "<?php echo base_url(); ?>Admin_sales/get_ftl_request_data",
+                data: {
+                    id: id
+                },
+                method: 'GET',
+                dataType: 'json',
+                success: function(response) {
+                   // console.log(response);
+                    $('#ftl_request_id').val(response[0].ftl_request_id); //hold the response in id and show on popup
+                    $('#customer_name').val(response[0].customer_name);
+                    $('#amount').val(response[0].amount);
+                    $('#show_modal').modal({
+                        backdrop: 'static',
+                        keyboard: true,
+                        show: true
+                    });
+                }
+            });
+        });
+
+        $('.updateStatus,#updateStatus1').click(function() {
+
+            $.ajax({
+                url: "<?php echo base_url(); ?>Admin_sales/update_request_data",
+                method: 'POST',
+                dataType: 'json',
+                data: {
+                    ftl_request_id: $('#ftl_request_id').val(),
+                    amount: $('#amount').val(),
+                    commissinon_amount: $('.commissinon_amount').val(),
+                    updateStatus: $('.updateStatus').val(),
+                    updateStatus1: $('#updateStatus1').val(),
+                },
+                success: function(response) {
+                    $('message').val(response.message)
+                    location.reload();
+                }
+            });
+        });
+
+
+
+ $('#select_amount').on('change',function(){
+
+    var select_a = $(this).val();
+    alert(select_a);
+    if( select_a == 1){
+        $('#c_amount').show();
+        $('#p_amount').hide();
+
+
+    //    var cm =  $('#comm_amount').val();
+    //    var a =  $('#amount').val();
+    //     var s  = cm + a;
+    //     alert(s);
+        // $('#total').val(s);
+      
+    }else if(select_a == 2){
+        $('#p_amount').show();
+        $('#c_amount').hide();
+
+    //   var pa =  $('#per_amount').val();
+    //   var a =  $('#amount').val();
+    //   var per =  (a/100)*pa;
+    //   alert(per);
+     
+    //    $('#total').val(per);
+    }
+
+          $('#comm_amount, #amount').keyup(function(){
+               var value1 = parseFloat($('#comm_amount').val()) || 0;
+               var value2 = parseFloat($('#amount').val()) || 0;
+               $('#total').val(value1 + value2);
+            });
+
+            $('#per_amount, #amount').keyup(function(){
+               var value1 = parseFloat($('#amount').val()) || 0;
+               var value2 = parseFloat($('#per_amount').val()) || 0;
+                var d = value1/100*value2
+               $('#total').val(d+value1);
+            });
+
+ });
+
+
+
+    });
+</script>

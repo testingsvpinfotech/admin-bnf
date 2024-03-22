@@ -1,0 +1,89 @@
+    <!-- Content -->
+    <div class="page-content">
+
+        <!-- Client logo -->
+        <div class="section-full dez-we-find bg-img-fix m-t50 p-b50" style="margin-top: 70px;">
+            <div class="container">
+                <div class="section-content">
+                    <div class="row">
+                        <div class="col-md-8" style="box-shadow: 2px 3px 10px 5px rgb(0 0 0 / 9%);">
+                            
+                            <form class="p-a30 dez-form" action="<?php echo base_url('truck-post'); ?>" method="POST">
+                                <h3 class="form-title m-t0" style="color:black;">POST YOUR TRUCK <span class="blink_data">LOCATION</span></h3>
+
+                                <div class="form-group">
+                                    <span style="margin-right: 40px;">Return Trip </span>
+                                    <input type="radio" name="return_tip" value="1">yes
+                                    <input type="radio" name="return_tip" value="2">No
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Enter Source City</label>
+                                            <input name="source_city" required="" class="form-control" placeholder="Enter Source City" type="text" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                           <label>Enter Destination City</label>
+                                            <input name="destination_city" required="" autocomplete="off" class="form-control" placeholder="Enter Destination City" type="text" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Select Truck</label>
+                                            <select class="form-control" name="truck_id">
+                                             <option>Select Truck Type</option>
+                                                <?php if(!empty($vehicle_name)){?>
+                                                    <?php foreach( $vehicle_name as $value ):?>
+                                                      <option value="<?php echo $value['vm_id'] ;?>"><?php echo $value['vehicle_model'] ;?> </option>
+                                                    <?php endforeach ;?>
+                                                <?php } ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Enter Truck Number</label>
+                                            <input type="text" name="truck_number" required="" class="form-control " placeholder="Enter Truck Number" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Enter Available Date</label>
+                                            <input type="date" name="available_date" required="" class="form-control" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group text-left m-0">
+                                    <button type="submit" name="submit" class="site-button dz-xs-flex m-r10">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Client logo END -->
+    </div>
+    <!-- Content END-->
+    <style>
+    .blink_data {
+    animation: blinker 1s linear infinite;
+    font-weight: normal;
+    color: #e95421;
+}
+@keyframes blinker{
+50% {
+    opacity: 0;
+}
+}
+    </style>
+  
