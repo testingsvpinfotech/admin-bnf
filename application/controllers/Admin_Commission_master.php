@@ -15,7 +15,7 @@ class Admin_Commission_master extends CI_Controller {
 
 	}
     public function view_all(){
-        $data = $this->data;
+        $data =[];
 		$user_id = $this->session->userdata("userId");
 		$data['groups'] = $this->db
                                 ->select('group_id, group_name, booking_commission, pickup_charges, delivery_commission, door_delivery_share')
@@ -129,6 +129,7 @@ class Admin_Commission_master extends CI_Controller {
                                 'success' => true,
                                 'msg' => 'Data inserted successfully', 
                             );
+                            
                         } else {
                             $response = array(
                                 'success' => false,

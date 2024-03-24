@@ -4,7 +4,7 @@
 <!-- START: Body-->
 
 <head>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css"> -->
     <style>
         .error {
             width: 100%;
@@ -33,7 +33,7 @@
                         <div class="card">
 
                             <div class="card-header">
-                                <h4 class="card-title">Add Group Name</h4>
+                                <h4 class="card-title">Edit Group Name</h4>
                             </div>
                             <div class="card-content">
                                 <div class="card-body">
@@ -43,37 +43,43 @@
                                             <form id="commission_master_edit" method="post" action="">
                                                 <div class="box-body">
                                                 <div class="form-group row">
-                                                        <label for="ac_name" class="col-sm-1 col-form-label">Group
-                                                            Name</label>
-                                                        <div class="col-sm-4">        
+                                                     
+                                                        <div class="col-sm-4">     
+                                                        <label for="ac_name" class="col-form-label">Group
+                                                            Name</label>   
                                                             <input type="text" id="group_id" class="form-control" name="group_id" value="<?= $group[0]->group_id; ?>" hidden>
                                                             <input type="text" id="group_name" class="form-control" <?php echo set_value('group_name'); ?> name="group_name" value="<?= $group[0]->group_name; ?>" disabled>
                                                         </div>
                                                     </div>
                                                     <br>
                                                     <div class="form-group row">
-                                                        <label for="ac_name" class="col-sm-1 col-form-label">Booking Commission (%)</label>
+                                                     
                                                         <div class="col-sm-3">
+                                                        <label for="ac_name" class="col-form-label">Booking Commission (%)</label>
                                                         <input class="form-control" type="text" id="booking_commission" <?php echo set_value('booking_commission'); ?> name="booking_commission" value="<?= $group[0]->booking_commission; ?>" >
                                                         </div>
 
-                                                        <label for="ac_name" class="col-sm-1 col-form-label">Pickup Charges </label>
+                                                       
                                                         <div class="col-sm-3">
+                                                        <label for="ac_name" class="col-form-label">Pickup Charges </label>
                                                         <input type="text" id="pickup_charges" class="form-control" <?php echo set_value('pickup_charges'); ?> name="pickup_charges" value="<?= $group[0]->pickup_charges; ?>">
                                                         </div>
 
-                                                        <label  for="ac_name" class="col-sm-1 col-form-label">Delivery Commission (%)</label>
+                                                       
                                                         <div class="col-sm-3">
+                                                        <label  for="ac_name" class="col-form-label">Delivery Commission (%)</label>
                                                         <input type="text" id="delivery_commission" class="form-control" <?php echo set_value('delivery_commission'); ?> name="delivery_commission" value="<?= $group[0]->delivery_commission;; ?>">
+                                                        </div>
+                                                        
+                                                        <div class="col-sm-3">
+                                                        <label for="ac_name" class="col-form-label">Door Delivery Share (%)</label>
+                                                        <input type="text" id="door_delivery" class="form-control"  <?php echo set_value('door_delivery'); ?> name="door_delivery" value="<?= $group[0]->door_delivery_share;; ?>">
+                                                        </div>
                                                         </div>
                                                     </div>
                                                     <br>
                                                     <div class="form-group row">
-                                                        <label for="ac_name" class="col-sm-1 col-form-label">Door Delivery Share Amt</label>
-                                                        <div class="col-sm-3">
-                                                        <input type="text" id="door_delivery" class="form-control"  <?php echo set_value('door_delivery'); ?> name="door_delivery" value="<?= $group[0]->door_delivery_share;; ?>">
-                                                        </div>
-                                                        </div>
+                                                       
                                                     <br><br>
                                                     <div class="col-md-2">
                                                         <div class="box-footer">

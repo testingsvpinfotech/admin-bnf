@@ -83,7 +83,7 @@
     $(document).ready(function() {
         $('.deletedata').click(function() {
             var getid = $(this).attr("relid");
-             alert(getid);
+            //  alert(getid);
             var baseurl = '<?php echo base_url(); ?>'
             swal({
                 title: 'Are you sure?',

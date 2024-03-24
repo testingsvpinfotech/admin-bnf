@@ -87,6 +87,11 @@ $(document).ready(function(){
                 success: function (response) {
                     console.log("eawf");
                     if (response.success == true) {
+                        var base_url = window.location.origin;
+                       
+                        window.location.replace('http://localhost/admin/admin/commission-master-view-groups');
+                        swal('Success!', response.msg, response.status)
+                        // window.location.replace(base_url+'admin/commission-master-add-group');
                         swal('Success!', response.msg, response.status)
                     }  else
                     {
@@ -161,6 +166,7 @@ $(document).ready(function(){
         },
         submitHandler: function (form) {
             var formData = new FormData(form);
+            var base_url = "<?php echo base_url(); ?>";
             //var groupIdValue = document.getElementById('group_id').value;
             var urlParts = window.location.pathname.split('/');
             var groupId = urlParts.pop() || urlParts.pop();
@@ -175,6 +181,11 @@ $(document).ready(function(){
                 success: function (response) {
                     console.log("eawf");
                     if (response.success == true) {
+                        // var base_url = window.location.origin;
+                        // var base_url ='<?php echo base_url(); ?>';
+                        
+                        // alert(base_url);
+                        window.location.replace('http://localhost/admin/admin/commission-master-view-groups');
                         swal('Success!', response.msg, response.status)
                     } else
                     {
