@@ -1,0 +1,18 @@
+# log files
+application/logs/
+# Pod Images 
+assets/pod/
+# lable images mens barocde
+assets/barocde/
+# Company Logo 
+assets/company/
+# franchise Document
+assets/franchise_assets/
+assets/franchise-document/
+assets/ftl-documents/
+assets/upload/
+
+# cookis ignor
+system/
+# Mis Report To customer in email store
+assets/*.csv
