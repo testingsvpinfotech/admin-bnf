@@ -1034,8 +1034,8 @@ $route['admin/stock-customer'] = 'Admin_customer/awb_available_stock';
 $route['admin/stock-customer/(:any)'] = 'Admin_customer/awb_available_stock';
 
 // commission master
-$route['admin/commission-master-add-group'] = 'Commission_master/index';
-$route['admin/commission-master-view-groups'] = 'Commission_master/view_all';
-$route['admin/commission-master-add/(:num)'] = 'Commission_master/add/$1';
-$route['admin/commission-master-edit/(:num)'] = 'Commission_master/edit/$1';
-$route['admin/commission-master-delete/(:num)'] = 'Commission_master/delete/$1';
+$route['admin/commission-master-add-group'] = 'Admin_Commission_master/index';
+$route['admin/commission-master-view-groups'] = 'Admin_Commission_master/view_all';
+$route['admin/commission-master-add/(:num)'] = 'Admin_Commission_master/add/$1';
+$route['admin/commission-master-edit/(:num)'] = 'Admin_Commission_master/edit/$1';
+$route['admin/commission-master-delete/(:num)'] = 'Admin_Commission_master/delete/$1';
