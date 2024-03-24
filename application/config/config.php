@@ -26,7 +26,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 // $config['base_url'] 	= 'http://3.111.238.127/';
 // $config['base_url'] 	= 'https://8631-110-226-176-208.ngrok-free.app/NewBNFAdmin/';
-$config['base_url'] 	= 'https://alfauzanenterprises.net/admin';
+$config['base_url'] 	= 'http://localhost/admin';
 
 
 /*
