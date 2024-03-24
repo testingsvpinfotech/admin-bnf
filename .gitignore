@@ -1,5 +1,6 @@
 # log files
 application/logs/
+application/config/config.php
 # Pod Images 
 assets/pod/
 # lable images mens barocde
